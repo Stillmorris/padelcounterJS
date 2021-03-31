@@ -1,0 +1,437 @@
+
+body {
+    margin: 0;
+    padding: 2rem;
+    font-family: sans-serif;
+    background-color: #000;
+    color: white;
+}
+
+.clearfix::after {
+    clear: both;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.f-left {
+    float: left;
+}
+
+.block {
+    display: block;
+}
+
+.inline {
+    display: inline;
+}
+
+.table {
+    display: table;
+}
+.table-cell {
+    display: table-cell;
+    width: 50%;
+}
+
+.inline-block {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.mb {
+    margin-bottom: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+.input_control {
+    margin-right: 1rem;
+}
+
+.input_label {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: .4rem;
+    text-transform: uppercase;
+}
+
+input {
+    padding: 0.6rem;
+    border-radius: .2rem;
+    border-width: 0;
+    color: #444;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input[type='checkbox']:checked+.slider {
+    background-color: brown;
+}
+
+input[type='checkbox']:focus+.slider {
+    box-shadow: 0 0 1px rgb(131, 30, 30);
+}
+
+input[type='checkbox']:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.commands {
+    opacity: 0;
+    max-height: 0;
+}
+
+.shortcut {
+    margin-bottom: .4rem;
+    font-size: 1.4rem;
+}
+
+/* Buttons */
+.settings button {
+    background-color: brown;
+    border: 2px solid #7a1f1f;
+    padding: 0.6rem 1rem;
+    border-radius: 1rem;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    outline-width: 0px;
+}
+
+.settings button:hover {
+    background-color: #7a1f1f;
+    border-color: brown;
+    box-shadow: 0px 6px 10px -3px #7a1f1f;
+}
+
+.settings button:active {
+    background-color: #551414;
+    border-color: brown;
+    top: 2px;
+}
+
+.btn_use_shortcuts {
+    background-color: brown;
+    border: 3px solid #7a1f1f;
+    padding: 0.4rem 1rem;
+    border-radius: 1rem;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    outline-width: 0px;
+    margin-left: 1rem;
+}
+
+.btn_use_shortcuts:hover {
+    background-color: #7a1f1f;
+    border-color: brown;
+    box-shadow: 0px 6px 10px -3px #7a1f1f;
+}
+
+.btn_use_shortcuts:active {
+    background-color: #551414;
+    border-color: brown;
+    top: 2px;
+}
+
+.all_buttons button {
+    font-weight: 600;
+    color: #fff;
+    font-size: .9rem;
+    position: relative;
+    width: 6rem;
+    height: 6rem;
+    margin: .3rem .2rem;
+    border: 3px solid rgba(255, 255, 255, 0);
+    border-radius: .35rem;
+    box-sizing: border-box;
+    outline-width: 0px;
+    cursor: pointer;
+}
+
+.all_buttons button:hover,
+.all_buttons button:active {
+    border: 3px solid rgba(255, 255, 255, .2);
+    top: -2px;
+}
+
+.all_buttons button:hover {
+    border: 3px solid rgba(255, 255, 255, .2);
+    box-shadow: 0px 6px 10px -3px rgba(255, 255, 255, .3), inset 0 0 10rem rgba(0, 0, 0, .3);
+}
+
+.all_buttons button:active {
+    top: 0px;
+}
+
+/* MATCH CONTROLS */
+.match_controls {
+    margin-bottom: 8rem;
+    border: 0.5rem dashed #3a3a3a;
+    padding: 2rem;
+    max-width: 960px;
+    background-color: #1a1a1a;
+    border-radius: 1rem;
+}
+
+.match_controls .title {
+    margin-top: 0;
+}
+
+/* SCOREBOARD STYLES */
+.scoreboard-container {
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+.scoreboard__logo {
+    left: -100%;
+    position: relative;
+    transition: left .75s cubic-bezier(0.44, 0.17, 0.15, 1.15);
+}
+
+.scoreboard__logo.show {
+    left: 0rem;
+}
+
+.scoreboard__logo--img {
+    max-width: 120px;
+    margin-bottom: 1rem;
+}
+.scoreboard {
+    opacity: 0;
+    left: -1rem;
+    transition: opacity .5s ease-out, left .5s ease-out;
+}
+
+.scoreboard.show {
+    opacity: 1;
+    left: 0;
+}
+
+.scoreboard__names {
+    position: relative;
+    background-color: #1F0D3A;
+    text-align: center;
+    border: 2px solid #fff;
+    z-index: 10;
+}
+
+.scoreboard__names .team {
+    padding: 0 1.1rem;
+    line-height: 2.2;
+}
+
+.scoreboard__names .team--a {
+    border-bottom: 1px solid #01DFDE;
+}
+
+.scoreboard__names .team span {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.scoreboard__service {
+    display: inline-block;
+    width: 0.8rem;
+    height: 0.8rem;
+    background-color: #BFC738;
+    border-radius: 50%;
+    margin-left: .2rem;
+    display: none;
+}
+
+.scoreboard__service.show {
+    display: inline-block;
+}
+
+/* SET */
+.scoreboard__set .set {
+    padding: 0 0.5rem;
+    line-height: 1.84;
+}
+
+.scoreboard__set .set span {
+    font-size: 1.4rem;
+    color: #1F0D3A;
+    font-weight: 600;
+}
+
+.scoreboard__sets--container {
+    position: relative;
+    opacity: 0;
+    left: -6rem;
+    transition: opacity .5s ease-out, left .5s ease-out;
+}
+
+.scoreboard__sets--container.show {
+    opacity: 1;
+    left: 0rem;
+}
+
+.scoreboard__set {
+    position: relative;
+    left: -6rem;
+    transition: left .5s ease-out;
+    z-index: 6;
+}
+
+.scoreboard__set:nth-child(2) {
+    z-index: 5;
+}
+
+.scoreboard__set:nth-child(3) {
+    z-index: 4;
+}
+
+.scoreboard__set:nth-child(4) {
+    z-index: 3;
+}
+
+.scoreboard__set:nth-child(3) {
+    z-index: 2;
+}
+
+.scoreboard__set.show {
+    left: 0;
+}
+
+.scoreboard__set.newset::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 1.4rem;
+    background-color: #1F0D3A;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+    z-index: 14;
+}
+
+.scoreboard__set .set-container {
+    position: relative;
+    width: 2.6rem;
+    background-color: #01DFDE;
+    text-align: center;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    z-index: 1;
+}
+
+.scoreboard__set .set--a {
+    border-bottom: 3px solid #1F0D3A;
+}
+
+/* SET_POINTS */
+.scoreboard__set_points .set_point {
+    padding: 0 0.5rem;
+    line-height: 1.9;
+}
+
+.scoreboard__set_points .set_point span {
+    font-size: 1.4rem;
+    color: #1F0D3A;
+    font-weight: 600;
+}
+
+.scoreboard__set_points .set_point span.adv {
+    font-size: 0.9rem;
+    margin-left: -2px;
+    line-height: 2.95;
+}
+
+.scoreboard__set_points {
+    position: absolute;
+    width: 2.6rem;
+    background-color: #ffffff;
+    text-align: center;
+    border-top: 2.5px solid #fff;
+    border-bottom: 2.5px solid #fff;
+    left: -6rem;
+    top: 0;
+    transition: left .5s ease-out;
+    z-index: 0;
+}
+
+.scoreboard__set_points.show {
+    left: 2.6rem;
+}
+
+.scoreboard__set_points .set_point--a {
+    position: relative;
+}
+
+.scoreboard__set_points .set_point--a::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background-color: #1F0D3A;
+}
+
+/* SET_POINTS GOLD */
+.scoreboard__set_points.golden {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(213, 164, 46, 1) 50%);
+    border-right: 2.5px solid #fff;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/default_theme.css">
+    <script src="js/main.js"></script>
+    <title>PadelCounter JS</title>
+</head>
+<body>
+    <div class="container">
+        <div class="match_controls">
+            <div class="table">
+                <div class="table-cell">
+                    <div class="mb config">
+                        <h2 class="title">System Config</h2>
+                        <div class="clearfix">
+                            <div>
+                                <div class="inline-block mb input_control">
+                                    <span class="block input_label" for="golden_points">Golden Points</span>
+                                    <div class="block">
+                                        <label class="switch">
+                                            <input class="config__golden_point" type="checkbox" checked name="golden_points" id="config__golden_point">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="inline-block mb input_control">
+                                    <span class="block input_label" for="tie_break">Tie Break</span>
+                                    <div class="block">
+                                        <label class="switch">
+                                            <input class="config__tie_break" type="checkbox" checked name="tie_break" id="config__tie_break">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2 settings">
+                        <h2 class="title">Players of the Match</h2>
+                        <div class="clearfix">
+                            <div>
+                                <div class="inline-block mb input_control">
+                                    <label class="block input_label" for="player1_name">Player 1</label>
+                                    <input class="block player_name" type="text" name="player1_name" id="player1_name" placeholder="Write a name" data-player="player1" onkeyup="setPlayerName(event)">
+                                </div>
+                                <div class="inline-block mb input_control">
+                                    <label class="block input_label" for="player2_name">Player 2</label>
+                                    <input class="block player_name" type="text" name="player2_name" id="player2_name" placeholder="Write a name" data-player="player2" onkeyup="setPlayerName(event)">
+                                </div>
+                            </div>
+                            <div>
+                                <div class="inline-block mb input_control">
+                                    <label class="block input_label" for="player3_name">Player 3</label>
+                                    <input class="block player_name" type="text" name="player3_name" id="player3_name" placeholder="Write a name" data-player="player3" onkeyup="setPlayerName(event)">
+                                </div>
+                                <div class="inline-block mb input_control">
+                                    <label class="block input_label" for="player4_name">Player 4</label>
+                                    <input class="block player_name" type="text" name="player4_name" id="player4_name" placeholder="Write a name" data-player="player4" onkeyup="setPlayerName(event)">
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="resetAllPlayersName();">Remove ALL Player Names</button>
+                    </div>
+                </div>
+                <div class="table-cell">
+                    <div class="buttons">
+                        <h2 class="title inline">Controls</h2>
+                        <button class="inline btn_use_shortcuts" type="button" onclick="document.getElementById('commands').focus();" >Focus shortcuts</button>
+                        <div class="mb"></div>
+                        <div class="all_buttons">
+                            <button class="inline-block" style="background-color: #720d75" onclick="show_hide_scoreboard();" ><span class="shortcut block">[ Q ]</span><span>Show/Hide Scoreboard</span></button>
+                            <button class="inline-block" style="background-color: #0d7523" onclick="show_hide_allsets();" ><span class="shortcut block">[ W ]</span><span>Show/Hide All set</span></button>
+                            <button class="inline-block" style="background-color: #5146c4" onclick="show_hide_points();" ><span class="shortcut block">[ E ]</span><span>Show/Hide Points</span></button>
+                            <button class="inline-block" style="background-color: #106863" onclick="reset_actual_set();" ><span class="shortcut block">[ R ]</span><span>Reset actual set</span></button>
+                            <button class="inline-block" style="background-color: #c05629" onclick="set_point('home','add');" ><span class="shortcut block">[ A ]</span><span>HOST / Add Point</span></button>
+                            <button class="inline-block" style="background-color: #1d86ac" onclick="set_point('adv','add');" ><span class="shortcut block">[ S ]</span><span>ADV / Add Point</span></button>
+                            <button class="inline-block" style="background-color: #6d2ebe" onclick="set_point('home','rem');" ><span class="shortcut block">[ D ]</span><span>HOST / Remove Point</span></button>
+                            <button class="inline-block" style="background-color: #c00b45" onclick="set_point('adv','rem');" ><span class="shortcut block">[ F ]</span><span>ADV / Remove Point</span></button>
+                            <button class="inline-block" style="background-color: #073f1a" onclick="set_service('home',true);" ><span class="shortcut block">[ Z ]</span><span>HOST / Set Service</span></button>
+                            <button class="inline-block" style="background-color: #917d0d" onclick="set_service('adv',true);" ><span class="shortcut block">[ X ]</span><span>ADV / Set Service</span></button>
+                            <button class="inline-block" style="background-color: #0f4169" onclick="reset_actual_setpoints();" ><span class="shortcut block">[ C ]</span><span>Reset actual set points</span></button>
+                            <button class="inline-block" style="background-color: #3f0d79" onclick="remove_all_sets();" ><span class="shortcut block">[ V ]</span><span>Remove all sets</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scoreboard-container">
+            <div id="scoreboard" class="scoreboard clearfix">
+                <div class="scoreboard__names f-left"> 
+                    <div class="team team--a">
+                        <span class="player" id="player1">-</span>&nbsp;<span class="separator">-</span>&nbsp;<span class="player" id="player2">-</span>
+                        <i class="scoreboard__service"></i>
+                    </div>
+                    <div class="team team--b">
+                        <span class="player" id="player3">-</span>&nbsp;<span class="separator">-</span>&nbsp;<span class="player" id="player4">-</span>
+                        <i class="scoreboard__service"></i>
+                    </div>
+                </div>
+                <div id="scoreboard__sets--container" class="f-left clearfix scoreboard__sets--container">
+                    <div class="f-left scoreboard__set show" data-setid="1" >
+                        <div class="set-container">
+                            <div class="set set--a">
+                                <span class="score">0</span>
+                            </div>
+                            <div class="set set--b">
+                                <span class="score">0</span>
+                            </div>
+                        </div>
+                        <div class="scoreboard__set_points">
+                            <div class="set_point set_point--a">
+                                <span class="score">0</span>
+                            </div>
+                            <div class="set_point set_point--b">
+                                <span class="score">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input class="commands" type="text" id="commands">
+</body>
+</html>
